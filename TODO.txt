@@ -3,5 +3,7 @@
 - connect.php
 - mlogin.php [ fn: getPasswordOf ]
 - GESTION DE $_SESSION['user']
+- inicio.php
 - activar/desactivar envio de formulario
+
 
