@@ -1,0 +1,7 @@
+# por hacer:
+- formulario de login
+- connect.php
+- mlogin.php [ fn: getPasswordOf ]
+- GESTION DE $_SESSION['user']
+- activar/desactivar envio de formulario
+
