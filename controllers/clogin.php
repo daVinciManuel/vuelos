@@ -31,3 +31,5 @@ function login_verify($user,$password){
   // compruebo CLAVE INTRODUCIDA es igual a CLAVE ENCRIPTADA
   return password_verify($password,getPasswordOf($user));
 }
+
+include './views/vlogin.php';
