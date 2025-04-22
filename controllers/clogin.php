@@ -32,4 +32,4 @@ function login_verify($user,$password){
   return password_verify($password,getPasswordOf($user));
 }
 
-include './views/vlogin.php';
+include_once './views/vlogin.php';

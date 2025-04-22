@@ -3,7 +3,7 @@
 function getPasswordOf($email) {
   $conn = connect();
     try {
-        $sql = "SELECT birthdate FROM passengerdetails WHERE emailaddress = :email";
+        $sql = "SELECT pass FROM passengerdetails WHERE emailaddress = :email";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':email', $email);
         $stmt->execute();

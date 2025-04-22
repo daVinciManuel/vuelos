@@ -19,22 +19,6 @@ function createColumnForPasswords()
     return $done;
 }
 
-// ---------- FUNCION COMPROBAR COLUMNA PARA PASSWORDS EXISTE
-// NO FUNCIONA
-function passColumnExists() {
-  $conn = connect();
-    try {
-        $sql = "SELECT pass FROM passengerdetails LIMIT 2";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchColumn();
-    } catch(PDOException $e) {
-        echo "Error checking pass column: " . $e->getMessage();
-        $result = null;
-    }
-  $conn = null;
-  return $result > 0? true : false;
-}
 
 // ------------ FUNCION RELLENAR COLUMNA PASSWORDS PARA UN USUARIO
 function fillPass($id,$password){
@@ -54,10 +38,10 @@ function fillPass($id,$password){
     $done = 'N';
     $conn->rollback();
   }
-  // $conn = null;
-  return $done;
+  $conn = null;
+  // return $done;
 }
-// ------------- FUNCION EXTRAER CLAVES NO ENCRIPTADAS E id
+// ------------- FUNCION EXTRAER CLAVES NO ENCRIPTADAS + id
 function getUsersData(){
   $conn = connect();
   try{
