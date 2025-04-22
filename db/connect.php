@@ -11,6 +11,7 @@ function connect(){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch(PDOException $e){
+    echo 'error connect: '. $e->getMessage();
         $conn=null;
         die($e->getMessage());
     }

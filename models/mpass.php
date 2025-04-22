@@ -39,7 +39,8 @@ function passColumnExists() {
 // ------------ FUNCION RELLENAR COLUMNA PASSWORDS PARA UN USUARIO
 function fillPass($id,$password){
   $conn = connect();
-  $done = false;
+  $conn->beginTransaction();
+  $done = '0';
   try{
     $sql = "UPDATE passengerdetails SET pass = :password WHERE passenger_id = :id";
     $stmt = $conn->prepare($sql);
@@ -47,13 +48,13 @@ function fillPass($id,$password){
     $stmt->bindParam('password',$password);
     $stmt->execute();
     $conn->commit();
-    $done = true;
+    $done = 'Y';
   }catch(PDOException $e){
+    echo 'error mysql: '. $e->getMessage();
+    $done = 'N';
     $conn->rollback();
-    die($e->getMessage());
-    $done = false;
   }
-  $conn = null;
+  // $conn = null;
   return $done;
 }
 // ------------- FUNCION EXTRAER CLAVES NO ENCRIPTADAS E id

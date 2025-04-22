@@ -16,12 +16,24 @@ require_once '../models/mpass.php';
 // }
 $usersData = getUsersData();
 echo '$usersData: ';
-var_dump($usersData);
+print_r($usersData);
 echo '<br>';
 echo '<br>';
+
+// foreach($usersData as $user){
+// $pass = password_hash($user["birthdate"],PASSWORD_DEFAULT);
+// $id = $user['passenger_id'];
+// echo $id;
+// fillPass($id,$pass);
+// echo 'insert ok';
+// }
 foreach($usersData as $user){
   $pass = password_hash($user["birthdate"],PASSWORD_DEFAULT);
   $id = $user['passenger_id'];
-  var_dump($id);
-  fillPass($id,$pass);
+  print_r($user['passenger_id']);
+  echo '<br>';
+  $reponse = fillPass($id,$pass);
+  echo $reponse;
+  // echo 'insert ok';
+  
 }
