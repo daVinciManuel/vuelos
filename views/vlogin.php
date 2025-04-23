@@ -13,17 +13,21 @@ echo '    </style>';
 echo '  </head>';
 echo '  <body>';
 echo '    <h1>Inicie sesi&oacute;n</h1>';
+// ------------ formulario ------------
 echo '  <form name="login" method="POST">';
 echo '    <label for="username">Usuario:</label>';
 echo '     <br>';
-echo '    <input name="username">';
+// email:
+echo '    <input name="username" required>';
 echo '     <br>';
+//
 echo '    <label for="password">Contrase&ntilde;a:</label>';
 echo '     <br>';
-echo '    <input name="password">';
+// password:
+echo '    <input name="password" required>';
 echo '     <br>';
-echo '    <input type="submit" name="loginPlease" value="Iniciar Sesi&oacute;n">';
-// continuar aqui
+// submit button:
+echo '    <input type="submit" name="login" value="Iniciar Sesi&oacute;n" '. STATUS . '>';
 echo '  </form>';
 echo '  </body>';
 echo '</html>';
