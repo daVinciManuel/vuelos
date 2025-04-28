@@ -1,7 +1,7 @@
 <?php
 $loginAttempts = $_COOKIE['loginAttempts'] ?? 0;
 // si mandan el formulario de login:
-if($_POST['login']){
+if(isset($_POST['login']) && $_POST['login']){
   // si el formulario no esta vacio:
   if(!empty($_POST['username']) && !empty($_POST['password'])){
     // -------------------- AUTENTICACION ------------------------------

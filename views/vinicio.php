@@ -1,2 +1,23 @@
 <?php
-echo '<h1>welcome'.$_SESSION['user'].'<h1>';
+echo '<html>';
+echo '  <head>';
+echo '    <meta charset="UTF-8">';
+echo '    <meta name="viewport" content="width=device-width, initial-scale=1.0">';
+echo '    <title>Vuelos</title>';
+echo '    <link rel="stylesheet" href="../css/bootstrap.min.css">';
+echo '  </head>';
+echo '  <body class="bg-dark">';
+echo '    <header>';
+echo '      <a class="btn btn-danger" href="./logout.php">Logout</a>';
+echo '    </header>';
+echo '    <main>';
+echo '<h1>WELCOME '. $_SESSION['user'].'</h1>';
+echo '      <menu>';
+// echo '        <li><a href="../controllers/cdownmusic.php">Descargar Musica</a></li>';
+// echo '        <li><a href="../controllers/chistfacturas.php">Historial de Facturas</a></li>';
+// echo '        <li><a href="#">Facturas entre dos fechas</a></li>';
+// echo '        <li><a href="#">Ranking de canciones</a></li>';
+echo '      </menu>';
+echo '    </main>';
+echo '  </body>';
+echo '</html>';
