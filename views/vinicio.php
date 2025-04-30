@@ -14,7 +14,7 @@ echo '    </header>';
 echo '    <main>';
 echo '<h1>WELCOME '. $_SESSION['user'].'</h1>';
 echo '      <menu>';
-// echo '        <li><a href="../controllers/cdownmusic.php">Descargar Musica</a></li>';
+echo '        <li><a href="./creservas.php">Reservar vuelos</a></li>';
 // echo '        <li><a href="../controllers/chistfacturas.php">Historial de Facturas</a></li>';
 // echo '        <li><a href="#">Facturas entre dos fechas</a></li>';
 // echo '        <li><a href="#">Ranking de canciones</a></li>';
