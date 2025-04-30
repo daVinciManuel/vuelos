@@ -29,5 +29,6 @@ echo '     <br>';
 // submit button:
 echo '    <input type="submit" name="login" value="Iniciar Sesi&oacute;n" '. STATUS . '>';
 echo '  </form>';
+echo '  <a href="./controllers/cpass.php">Click here to UPDATE DATABASE</a>';
 echo '  </body>';
 echo '</html>';
