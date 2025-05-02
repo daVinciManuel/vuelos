@@ -7,4 +7,18 @@
 + inicio.php
 + activar/desactivar envio de formulario
 
+- vuelos[
+    v[flight_id,
+      flightno,
+      airline_id,
+      from,
+      to,
+      departure,
+      arrival,
+      prize],
+    v[],
+    v[],
+    v[],
+    ...
+  ]
 

@@ -12,20 +12,30 @@ echo '    <header>';
 echo '      <a class="btn btn-danger" href="./logout.php">Logout</a>';
 echo '    </header>';
 echo '    <main>';
-echo '      <h1>WELCOME '. $_SESSION['user'].'</h1>';
+$nombre = $_SESSION['user'] ?? '';
+echo '      <h1>WELCOME '. $nombre .'</h1>';
 echo '      <div class="card border">';
 // ---------------------------------------------------------------------------------
 echo '      <form id="" name="" action="" method="post" class="card-body">';
 echo '        <div class="form-group">';
-echo '          Cancion';
+echo '          Vuelos';
 // ----------------- LISTADO DE PRODUCTOS ----------------------------------------
-echo '          <select name="track" class="">';
+echo '          <select name="flight" class="">';
 echo '            <option disabled selected>Selecciona una pista</option>';
+if(isset($vuelos)){
   $optionsList = '';
-  foreach($vehiculos as $v){
-    $optionsList .= '<option value="' . $v['TrackId'] .'">'.$v['Name'] . ' - ' . $v['UnitPrice'] . '€' .'</option>';
+  foreach($vuelos as $v){
+    $optionsList .= '<option value="' . $v['flight_id'] .'">';
+    $optionsList .= $v['flightno'] . ' ';
+    $optionsList .= $v['airline_id'] . ' ';
+    $optionsList .= 'from <b>'.$v['from'].'</b> ';
+    $optionsList .= 'to <b>'.$v['to'] .'</b> ';
+    $optionsList .= $v['departure'] .' - ' . $v['arrival'] .' ';
+    $optionsList .= $v['prize'] . '€';
+    $optionsList .= '</option>';
   }
-echo $optionsList;
+  echo $optionsList;
+}
 echo '          </select>';
 echo '        </div>';
 // BOTON AGREGAR AL CARRITO
@@ -33,41 +43,39 @@ echo '		<input type="submit" name="addToCart" value="Agregar al carrito" class="
 // BOTON COMPRAR 
 echo '		<input type="submit" name="download" value="Finalizar Compra" class="btn btn-info disabled">';
 // --------------------- CARRITO ----------------------------------------------
-      if(isset($carritoView)){
-      if(count($carritoView) > 0){
-echo '      <hr>';
-echo '      <h3>Carrito</h3>';
-echo '      <table>';
-echo '        <thead>';
-echo '          <tr>';
-echo '            <th>Cancion</th>';
-echo '            <th>Cantidad</th>';
-echo '            <th>Precio</th>';
-echo '            <th></th>';
-echo '          </tr>';
-echo '        </thead>';
-echo '        <tbody>';
-      foreach($carritoView as $c){
-        if($c){
+if(isset($carritoView) && count($carritoView) > 0){
+  echo '      <hr>';
+  echo '      <h3>Carrito</h3>';
+  echo '      <table>';
+  echo '        <thead>';
+  echo '          <tr>';
+  echo '            <th>Cancion</th>';
+  echo '            <th>Cantidad</th>';
+  echo '            <th>Precio</th>';
+  echo '            <th></th>';
+  echo '          </tr>';
+  echo '        </thead>';
+  echo '        <tbody>';
+        foreach($carritoView as $c){
+          if($c){
 
-echo '          <tr>';
-echo '            <td>'. $c['Name'].'</td>';
-echo '            <td> &nbsp;&nbsp;&nbsp;'. $_SESSION['carrito'][$c['TrackId']].'</td>';
-echo '            <td>'. $c['UnitPrice'] . '</td>';
-// CASILLA PARA SELECCIONAR ITEM PARA ELIMINAR
-echo '            <td><input type="checkbox" name="tracksToRemove[]" value="'. $c['TrackId'].'"></td>';
-echo '          </tr>';
-       }}
-echo '            <tr>';
-echo '              <td></td>';
-echo '              <td></td>';
-// BOTON PARA ELIMINAR ITEM DEL CARRITO
-echo '              <td><input type="submit" name="removeFromCart" value="Eliminar" class="btn btn-danger"></td>';
-echo '            </tr>';
-echo '        </tbody>';
-echo '      </table>';
-        }
-      }
+  echo '          <tr>';
+  echo '            <td>'. $c['Name'].'</td>';
+  echo '            <td> &nbsp;&nbsp;&nbsp;'. $_SESSION['carrito'][$c['TrackId']].'</td>';
+  echo '            <td>'. $c['UnitPrice'] . '</td>';
+  // CASILLA PARA SELECCIONAR ITEM PARA ELIMINAR
+  echo '            <td><input type="checkbox" name="tracksToRemove[]" value="'. $c['TrackId'].'"></td>';
+  echo '          </tr>';
+        }}
+  echo '            <tr>';
+  echo '              <td></td>';
+  echo '              <td></td>';
+  // BOTON PARA ELIMINAR ITEM DEL CARRITO
+  echo '              <td><input type="submit" name="removeFromCart" value="Eliminar" class="btn btn-danger"></td>';
+  echo '            </tr>';
+  echo '        </tbody>';
+  echo '      </table>';
+}
 echo '      </form>';
 echo '      </div>';
 echo '    </main>';
