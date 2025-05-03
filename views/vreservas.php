@@ -25,12 +25,12 @@ echo '            <option disabled selected>Selecciona una pista</option>';
 if(isset($vuelos)){
   $optionsList = '';
   foreach($vuelos as $v){
-    $optionsList .= '<option value="' . $v['flight_id'] .'">';
+    $optionsList .= '<option value="' . $v['flight_id'].'">';
     $optionsList .= $v['flightno'] . ' ';
-    $optionsList .= $v['airline_id'] . ' ';
-    $optionsList .= 'from <b>'.$v['from'].'</b> ';
-    $optionsList .= 'to <b>'.$v['to'] .'</b> ';
-    $optionsList .= $v['departure'] .' - ' . $v['arrival'] .' ';
+    $optionsList .= $v['airlinename'] . ' ';
+    $optionsList .= 'from <b>'.$v['from_a'].'</b> ';
+    $optionsList .= 'to <b>'.$v['to_a'] .'</b> ';
+    $optionsList .= '['.$v['departure'] .'] - [' . $v['arrival'] .'] ';
     $optionsList .= $v['prize'] . '€';
     $optionsList .= '</option>';
   }
