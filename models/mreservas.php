@@ -24,11 +24,11 @@ function getVuelosDisponibles(){
     if($vuelos){
       foreach($vuelos as &$v){
         if($v['capacity'] < 100){
-          $v['prize'] = 80;
+          $v['price'] = 80;
         }else if($v['capacity'] < 200){
-          $v['prize'] = 120;
+          $v['price'] = 120;
         }else{
-          $v['prize'] = 300;
+          $v['price'] = 300;
         }
       }
     }
@@ -40,23 +40,25 @@ function getVuelosDisponibles(){
   $conn = null;
   return $result ?? null;
 }
-function getPrizeOf($flight_id){
+function getPriceOf($flight_id){
+  $conn = connect();
   try{
     $sql = 'SELECT airplane.capacity FROM airplane JOIN flight ON flight.airplane_id = airplane.airplane_id WHERE flight.flight_id = :id';
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':id',$flight_id);
     $stmt->execute();
     $capacity = $stmt->fetchColumn();
-    $prize = 0;
+    $price = 0;
     if($capacity && $capacity < 100){
-      $prize = 80;
+      $price = 80;
     }else if($capacity < 200){
-      $prize = 120;
+      $price = 120;
     }else{
-      $prize = 300;
+      $price = 300;
     }
   }catch(PDOExcepion $e){
       echo "Error extracting flights data: " . $e->getMessage();
   }
-  return $prize ?? null;
+  $conn = null;
+  return $price ?? null;
 }

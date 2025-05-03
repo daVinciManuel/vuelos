@@ -31,7 +31,7 @@ if(isset($vuelos)){
     $optionsList .= 'from <b>'.$v['from_a'].'</b> ';
     $optionsList .= 'to <b>'.$v['to_a'] .'</b> ';
     $optionsList .= '['.$v['departure'] .'] - [' . $v['arrival'] .'] ';
-    $optionsList .= $v['prize'] . '€';
+    $optionsList .= $v['price'] . '€';
     $optionsList .= '</option>';
   }
   echo $optionsList;
@@ -41,7 +41,7 @@ echo '        </div>';
 // BOTON AGREGAR AL CARRITO
 echo '		<input type="submit" name="addToCart" value="Agregar al carrito" class="btn btn-info disabled">';
 // BOTON COMPRAR 
-echo '		<input type="submit" name="download" value="Finalizar Compra" class="btn btn-info disabled">';
+echo '		<input type="submit" name="pay" value="Finalizar Compra" class="btn btn-info disabled">';
 // --------------------- CARRITO ----------------------------------------------
 if(isset($carritoView) && count($carritoView) > 0){
   echo '      <hr>';
