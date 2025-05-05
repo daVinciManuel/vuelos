@@ -10,6 +10,7 @@ echo '  </head>';
 echo '  <body class="bg-dark">';
 echo '    <header>';
 echo '      <a class="btn btn-danger" href="./logout.php">Logout</a>';
+echo '      <a class="btn btn-warning" href="./cinicio.php">Inicio</a>';
 echo '    </header>';
 echo '    <main>';
 $nombre = $_SESSION['user'] ?? '';
