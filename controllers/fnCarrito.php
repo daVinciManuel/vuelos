@@ -36,6 +36,7 @@ function agregarAlCarrito($vuelo){
   }
   return $cart;
 }
+// CREA O ACTUALIZA COOKIE CARRITO
 function storeCarrito($c){
   $cart = serialize($c);
   setCookie("cart", $cart, time() + 3600 * 1, "/");
