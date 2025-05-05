@@ -1,5 +1,20 @@
 <?php
 function agregarAlCarrito($vuelo){
+  // ESTRUCTURA:
+  // carrito: [
+  //    vuelos: [vueloA,vueloB,vueloC,vueloD]
+  //    cantidad: [vueloA => '3', vueloC => '5', vueloB => '7']
+  // ]
+  //
+  // array VUELOS: value = almacena ID del vuelo
+  //
+  // array CANTIDAD: key(s) = vueloID, value=cantidad de ese vuelo
+  //
+  // cuando un mismo vuelo se pide por segunda vez:
+  // se agrega un elemento en el array CANTIDAD
+  // cuyo indice es vueloID y valor inicial es 2
+  //
+  //
   // si existe la COOKIE DEL CARRITO la usa, si no, crea un array vacio
   $cart = isset($_COOKIE['cart']) ? unserialize($_COOKIE['cart']) : array('vuelos' => array(), 'cantidad' => array());
   // compruebo si ya se ha pedido ese mismo vuelo

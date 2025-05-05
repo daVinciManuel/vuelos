@@ -1,13 +1,18 @@
 # por hacer:
+-------------------------------------------------------
+LOGIN:
+
 + formulario de login
 + connect.php
 + encrypt passwords
-- mlogin.php [ fn: getPasswordOf ]
++ mlogin.php [ fn: getPasswordOf ]
 + GESTION DE $_SESSION['user']
 + inicio.php
 + activar/desactivar envio de formulario
+-----------------------------------------------------
+RESERVAS: 
 
-- vuelos[
++ vuelos[
     v[flight_id,
       flightno,
       airline_id,
@@ -21,4 +26,14 @@
     v[],
     ...
   ]
-
++ carrito[
+    vuelos[vueloA,vueloB,vueloC],
+    cantidad[vueloA => 3, vueloB => 5, vueloC => 2]
+  ] 
++ carrito agrega elementos
+- carrito elimina elementos
+- mostrar carrito
+- pago SIN REDSYS
+- pago CON REDSYS
+- check in 
+------------------------------------------------------
