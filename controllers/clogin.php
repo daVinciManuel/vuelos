@@ -1,6 +1,5 @@
 <?php
 if(isset($_COOKIE['PHPSESSID'])){
-  var_dump($_COOKIE['PHPSESSID']);
   header('Location: ./controllers/cinicio.php');
   exit();
 }

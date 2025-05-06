@@ -33,6 +33,8 @@ RESERVAS:
 + carrito agrega elementos
 + mostrar carrito
 + carrito elimina elementos
+- QUITAR CONSTANTES
+- INSERTS A DB
 - pago SIN REDSYS
 - pago CON REDSYS
 - check in 

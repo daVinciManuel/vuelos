@@ -1,5 +1,5 @@
 <?php
 require_once './checkOAuth.php';
-var_dump($_COOKIE['PHPSESSID']);
-
+echo '$SESSION: ';
+var_dump($_SESSION);
 require_once '../views/vinicio.php';
