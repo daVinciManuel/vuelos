@@ -31,8 +31,8 @@ RESERVAS:
     cantidad[vueloA => 3, vueloB => 5, vueloC => 2]
   ] 
 + carrito agrega elementos
-- carrito elimina elementos
-- mostrar carrito
++ mostrar carrito
++ carrito elimina elementos
 - pago SIN REDSYS
 - pago CON REDSYS
 - check in 

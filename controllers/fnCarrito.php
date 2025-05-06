@@ -1,5 +1,5 @@
 <?php
-function agregarAlCarrito($vuelo){
+function carritoAdd($vuelo){
   // ESTRUCTURA:
   // carrito: [
   //    vuelos: [vueloA,vueloB,vueloC,vueloD]
@@ -33,11 +33,46 @@ function agregarAlCarrito($vuelo){
     // si NO se ha pedido el mismo vuelo previamente
   }else{
     array_push($cart['vuelos'],$vuelo);
+    $cart['cantidad'][$vuelo] = 1;
   }
   return $cart;
 }
 // CREA O ACTUALIZA COOKIE CARRITO
-function storeCarrito($c){
+function carritoSave($c){
   $cart = serialize($c);
   setCookie("cart", $cart, time() + 3600 * 1, "/");
+}
+// extrae la informacion para mostrar el carrito
+function carritoContains($flight){
+  $flightInCart = false;
+  if(in_array(strval($flight['flight_id']), CART['vuelos'])){
+    $flightInCart = true;
+  }
+  return $flightInCart;
+}
+// mostrar carrito
+function mostrarCarrito(){
+  if( !defined('CART') ){
+    define('CART', unserialize($_COOKIE['cart']));
+  }
+  if(!empty(CART['vuelos'])){
+    define('VCARRITO',array_filter(VUELOS, 'carritoContains') ?? null);
+  }
+}
+// eliminar de carrito
+function carritoDel($vuelos){
+  
+  $carrito = unserialize($_COOKIE['cart']);
+  foreach($vuelos as $v){
+    $key = array_search($v,$carrito['vuelos']);
+    if(!is_null($key)){
+      unset($carrito['vuelos'][$key]);
+      unset($carrito['cantidad'][$v]);
+    }
+  }
+  return $carrito;
+}
+// eliminar carrito
+function carritoDestroy(){
+  setCookie("cart", '', time() - 99999, "/");
 }
