@@ -1,4 +1,9 @@
 <?php
+if(isset($_COOKIE['PHPSESSID'])){
+  var_dump($_COOKIE['PHPSESSID']);
+  header('Location: ./controllers/cinicio.php');
+  exit();
+}
 $loginAttempts = $_COOKIE['loginAttempts'] ?? 0;
 // incluye enableLogin() disableLogin() storeFailedLogin()
 require_once './controllers/fnlogin.php';
