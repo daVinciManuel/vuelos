@@ -6,13 +6,13 @@ function grantAccess($email){
   $done = false;
   // Obtengo el nombre de usuario
   $username = getNameOf($email) ?? null;
-  $userId = getIdOf($email) ?? null;
+  $userid = getIdOf($email) ?? null;
   // SI USER EXISTE:
-  if($username && $userId){
+  if($username && $userid){
   // crea VARIABLES DE SESION:
     session_start();
     $_SESSION['user'] = $username;
-    $_SESSION['userId'] = $userId;
+    $_SESSION['userid'] = $userid;
     $done = true;
   }
   return $done;

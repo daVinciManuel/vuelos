@@ -23,9 +23,9 @@ echo '          Vuelos';
 // ----------------- LISTADO DE PRODUCTOS ----------------------------------------
 echo '          <select name="flight" class="">';
 echo '            <option disabled selected>Selecciona una pista</option>';
-if(defined('VUELOS')){
+if(isset($allVuelos)){
   $optionsList = '';
-  foreach(VUELOS as $v){
+  foreach($allVuelos as $v){
     $optionsList .= '<option value="' . $v['flight_id'].'">';
     $optionsList .= $v['flightno'] . ' ';
     $optionsList .= $v['airlinename'] . ' ';
@@ -44,7 +44,7 @@ echo '		<input type="submit" name="addToCart" value="Agregar al carrito" class="
 // BOTON COMPRAR 
 echo '		<input type="submit" name="pay" value="Finalizar Compra" class="btn btn-info disabled">';
 // --------------------- CARRITO ----------------------------------------------
-if(defined('VCARRITO')){
+if(isset($vcarrito)){
   echo '      <hr>';
   echo '      <h3>Vuelos por pagar</h3>';
   echo '      <table>';
@@ -57,12 +57,12 @@ if(defined('VCARRITO')){
   echo '          </tr>';
   echo '        </thead>';
   echo '        <tbody>';
-  foreach(VCARRITO as $c){
+  foreach($vcarrito as $c){
     if($c){
       echo '          <tr>';
       echo '            <td>'. $c['flightno'] . ' '. $c['airlinename'] . ' [' . $c['departure'] . ' - '. $c['arrival'] .']</td>';
       
-      echo '            <td> &nbsp;&nbsp;&nbsp;'. CART['cantidad'][$c['flight_id']] .'</td>';
+      echo '            <td> &nbsp;&nbsp;&nbsp;'. $cart['cantidad'][$c['flight_id']] .'</td>';
       echo '            <td>'. $c['price'] . '€' . '</td>';
       // CASILLA PARA SELECCIONAR ITEM PARA ELIMINAR
       echo '            <td><input type="checkbox" name="flightsToRemove[]" value="'. $c['flight_id'].'"></td>';

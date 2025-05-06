@@ -24,10 +24,8 @@ function carritoAdd($vuelo){
   }
   // SI se ha pedido el vuelo
   if($repeated){
-    // creo un array con la cantidad de cada producto
-    if(!isset($cart['cantidad'][$vuelo])){
-      $cart['cantidad'][$vuelo] = 2;
-    }else{
+    // incremento la cantidad
+    if(isset($cart['cantidad'][$vuelo])){
       $cart['cantidad'][$vuelo] = 1 + intval($cart['cantidad'][$vuelo]);
     }
     // si NO se ha pedido el mismo vuelo previamente
@@ -40,34 +38,33 @@ function carritoAdd($vuelo){
 // CREA O ACTUALIZA COOKIE CARRITO
 function carritoSave($c){
   $cart = serialize($c);
+  $cartname = 'cart' + $_SESSION['userid']
   setCookie("cart", $cart, time() + 3600 * 1, "/");
 }
-// extrae la informacion para mostrar el carrito
-function carritoContains($flight){
-  $flightInCart = false;
-  if(in_array(strval($flight['flight_id']), CART['vuelos'])){
-    $flightInCart = true;
+// carrito visible
+function carritoToView($cart,$allVuelos){
+  if(!empty($cart['vuelos'])){
+    $vcarrito = array();
+    // del listado de vuelos,
+    // selecciono los que estan en el carrito
+    foreach($allVuelos as $v){
+      if(in_array(strval($v['flight_id']), $cart['vuelos'])){
+        array_push( $vcarrito, $v);
+      }
+    }
   }
-  return $flightInCart;
+  return $vcarrito;
 }
-// mostrar carrito
-function mostrarCarrito(){
-  if( !defined('CART') ){
-    define('CART', unserialize($_COOKIE['cart']));
-  }
-  if(!empty(CART['vuelos'])){
-    define('VCARRITO',array_filter(VUELOS, 'carritoContains') ?? null);
-  // calculo del precio total:
+// calculo del precio total:
+function calcPrecioTotal($vcarrito){
   $total = 0;
   foreach(VCARRITO as $c){
     $total += $c['price'] * CART['cantidad'][$c['flight_id']];
   }
-  define('PRECIO_TOTAL',$total);
-  }
+  return $total;
 }
 // eliminar de carrito
 function carritoDel($vuelos){
-  
   $carrito = unserialize($_COOKIE['cart']);
   foreach($vuelos as $v){
     $key = array_search($v,$carrito['vuelos']);
