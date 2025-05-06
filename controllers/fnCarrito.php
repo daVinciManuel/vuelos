@@ -58,6 +58,11 @@ function mostrarCarrito(){
   if(!empty(CART['vuelos'])){
     define('VCARRITO',array_filter(VUELOS, 'carritoContains') ?? null);
   }
+  // calculo del precio total:
+  foreach(VCARRITO as $c){
+    $total += $c['price'] * CART['cantidad'][$c['flight_id']];
+  }
+  define('PRECIO_TOTAL',$total);
 }
 // eliminar de carrito
 function carritoDel($vuelos){

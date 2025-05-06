@@ -53,7 +53,7 @@ if(defined('VCARRITO')){
   echo '            <th>Vuelo</th>';
   echo '            <th>Numero de asientos</th>';
   echo '            <th>Precio por asiento</th>';
-  echo '            <th>Total</th>';
+  echo '            <th>Seleccionar</th>';
   echo '          </tr>';
   echo '        </thead>';
   echo '        <tbody>';
@@ -71,8 +71,21 @@ if(defined('VCARRITO')){
   echo '            <tr>';
   echo '              <td></td>';
   echo '              <td></td>';
+  echo '              <td></td>';
   // BOTON PARA ELIMINAR ITEM DEL CARRITO
   echo '              <td><input type="submit" name="removeFromCart" value="Eliminar" class="btn btn-danger"></td>';
+  echo '            </tr>';
+  echo '            <tr>';
+  echo '              <td><hr></td>';
+  echo '              <td><hr></td>';
+  echo '              <td><hr></td>';
+  echo '              <td><hr></td>';
+  echo '            </tr>';
+  echo '            <tr>';
+  echo '              <th>Total:</th>';
+  echo '              <td></td>';
+  echo '              <td></td>';
+  echo '              <td>'.PRECIO_TOTAL. '€' .'</td>';
   echo '            </tr>';
   echo '        </tbody>';
   echo '      </table>';
