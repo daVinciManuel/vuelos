@@ -23,9 +23,10 @@ if(isset($_POST['addToCart']) && isset($_POST['flight'])){
 }elseif(isset($cart)){
   include_once './fnCarrito.php';
   $vcarrito = carritoToView($cart,$allVuelos);
-}elseif(isset($_COOKIE['cart'])){
+}elseif(isset($_COOKIE['cart'.strval($_SESSION['userid'])])){
   include_once './fnCarrito.php';
-  $vcarrito = carritoToView($_COOKIE['cart'],$allVuelos);
+  $cart = unserialize($_COOKIE[ 'cart'.strval($_SESSION['userid']) ]);
+  $vcarrito = carritoToView($cart,$allVuelos);
 }
 
 // comprar
@@ -34,5 +35,8 @@ if(isset($_POST['pay'])){
   //
   // guardar en db:
   //
+}
+if(isset($vcarrito) && isset($cart)){
+  $precioTotal = calcPrecioTotal($vcarrito, $cart);
 }
 require_once '../views/vreservas.php';

@@ -85,7 +85,7 @@ if(isset($vcarrito)){
   echo '              <th>Total:</th>';
   echo '              <td></td>';
   echo '              <td></td>';
-  echo '              <td>'.PRECIO_TOTAL. '€' .'</td>';
+  echo '              <td>'.$precioTotal. '€' .'</td>';
   echo '            </tr>';
   echo '        </tbody>';
   echo '      </table>';
