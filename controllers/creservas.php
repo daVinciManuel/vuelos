@@ -31,9 +31,18 @@ if(isset($_POST['addToCart']) && isset($_POST['flight'])){
 
 // comprar
 if(isset($_POST['pay'])){
+  if(isset($cart)){
   // pasarela de pago:
   //
   // guardar en db:
+    include_once '../db/connect.php';
+    include_once '../models/mpayment.php';
+    include_once './fnPagar.php';
+    storeCarritoPagado($cart,$_SESSION['userid']);
+    carritoDestroy();
+    $cart = null;
+    $vcarrito = null;
+  }
   //
 }
 if(isset($vcarrito) && isset($cart)){

@@ -40,25 +40,3 @@ function getVuelosDisponibles(){
   $conn = null;
   return $result ?? null;
 }
-function getPriceOf($flight_id){
-  $conn = connect();
-  try{
-    $sql = 'SELECT airplane.capacity FROM airplane JOIN flight ON flight.airplane_id = airplane.airplane_id WHERE flight.flight_id = :id';
-    $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':id',$flight_id);
-    $stmt->execute();
-    $capacity = $stmt->fetchColumn();
-    $price = 0;
-    if($capacity && $capacity < 100){
-      $price = 80;
-    }else if($capacity < 200){
-      $price = 120;
-    }else{
-      $price = 300;
-    }
-  }catch(PDOExcepion $e){
-      echo "Error extracting flights data: " . $e->getMessage();
-  }
-  $conn = null;
-  return $price ?? null;
-}

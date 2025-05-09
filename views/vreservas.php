@@ -44,7 +44,7 @@ echo '		<input type="submit" name="addToCart" value="Agregar al carrito" class="
 // BOTON COMPRAR 
 echo '		<input type="submit" name="pay" value="Finalizar Compra" class="btn btn-info disabled">';
 // --------------------- CARRITO ----------------------------------------------
-if(isset($vcarrito)){
+if(isset($vcarrito) && isset($cart)){
   echo '      <hr>';
   echo '      <h3>Vuelos por pagar</h3>';
   echo '      <table>';
