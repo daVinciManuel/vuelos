@@ -2,6 +2,7 @@
 function insertReserva($booking_id,$flight_id,$userid,$price){
   $conn = connect();
   $conn->beginTransaction();
+  $done = false;
   try{
     $sql = 'INSERT INTO booking(booking_id,flight_id,seat,passenger_id,price)
             VALUES (:booking_id,:flight_id,null,:passenger_id,:price)';
@@ -12,13 +13,16 @@ function insertReserva($booking_id,$flight_id,$userid,$price){
     $stmt->bindParam(':price',$price);
     $stmt->execute();
     $conn->commit();
+    $done = true;
   }catch(PDOException $e){
     $conn->rollback();
     //die($e->getMessage());
     echo "Error inserting booking: " . $e->getMessage();
   }
   $conn = null;
+  return $done;
 }
+// retorna el ultimo id de booking +1
 function nextBookingId(){
   $conn = connect();
   try{

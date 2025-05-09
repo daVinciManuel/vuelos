@@ -38,12 +38,13 @@ if(isset($_POST['pay'])){
     include_once '../db/connect.php';
     include_once '../models/mpayment.php';
     include_once './fnPagar.php';
-    storeCarritoPagado($cart,$_SESSION['userid']);
-    carritoDestroy();
-    $cart = null;
-    $vcarrito = null;
+    if(storeCarritoPagado($cart,$_SESSION['userid'])){
+      echo '<b>ALERT:</b> pago realizado correctamente';
+      carritoDestroy();
+      $cart = null;
+      $vcarrito = null;
+    }
   }
-  //
 }
 if(isset($vcarrito) && isset($cart)){
   $precioTotal = calcPrecioTotal($vcarrito, $cart);

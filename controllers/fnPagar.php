@@ -1,10 +1,19 @@
 <?php
 function storeCarritoPagado($cart,$userid){
-  foreach($cart['vuelos'] as $v){
+  $done = false;
+  foreach($cart['vuelos'] as $k => $v){
     $cantidad = $cart['cantidad'][$v];
     while($cantidad > 0){
-      insertReserva(nextBookingId(),$v,$userid,getPriceOf($v));
-      $cantidad -= 1;
+      if(insertReserva(nextBookingId(),$v,$userid,getPriceOf($v))){
+        $cantidad -= 1;
+      }
     }
+    unset($cart['vuelos'][$k]);
+    unset($cart['cantidad'][$v]);
   }
+  
+  if(count($cart['vuelos']) == 0){
+    $done = true;
+  }
+  return $done;
 }
