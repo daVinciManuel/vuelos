@@ -41,8 +41,6 @@ echo '          </select>';
 echo '        </div>';
 // BOTON AGREGAR AL CARRITO
 echo '		<input type="submit" name="addToCart" value="Agregar al carrito" class="btn btn-info disabled">';
-// BOTON COMPRAR 
-echo '		<input type="submit" name="pay" value="Finalizar Compra" class="btn btn-info disabled">';
 // --------------------- CARRITO ----------------------------------------------
 if(isset($vcarrito) && isset($cart)){
   echo '      <hr>';
@@ -91,6 +89,17 @@ if(isset($vcarrito) && isset($cart)){
   echo '      </table>';
 }
 echo '      </form>';
+// BOTON COMPRAR 
+if($pago){
+  echo '<form action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">';
+  if(isset($redsysData)){
+  echo '  <input type="hidden" name="Ds_SignatureVersion" value="'. $version .'"/>';
+  echo '  <input type="hidden" name="Ds_MerchantParameters" value="'. $params .'"/>';
+  echo '  <input type="hidden" name="Ds_Signature" value="'. $signature .'"/> ';
+  }
+  echo '  <input type="submit" name="pay" value="Finalizar Compra" class="btn btn-warning">';
+  echo '</form>';
+} 
 echo '      </div>';
 echo '    </main>';
 echo '  </body>';

@@ -29,11 +29,20 @@ if(isset($_POST['addToCart']) && isset($_POST['flight'])){
   $vcarrito = carritoToView($cart,$allVuelos);
 }
 
+if(isset($vcarrito) && isset($cart)){
+  $precioTotal = calcPrecioTotal($vcarrito, $cart);
+  $pago = true;
+}
+
 // comprar
 if(isset($_POST['pay'])){
   if(isset($cart)){
   // pasarela de pago:
-  //
+    $redsysData = setRedsysValues($precioTotal) ?? array();
+    $version    = $redsysData['version'] ?? '';
+    $params     = $redsysData['params'] ?? '';
+    $signature  = $redsysData['signature'] ?? '';
+
   // guardar en db:
     include_once '../db/connect.php';
     include_once '../models/mpayment.php';
@@ -45,8 +54,5 @@ if(isset($_POST['pay'])){
       $vcarrito = null;
     }
   }
-}
-if(isset($vcarrito) && isset($cart)){
-  $precioTotal = calcPrecioTotal($vcarrito, $cart);
 }
 require_once '../views/vreservas.php';
