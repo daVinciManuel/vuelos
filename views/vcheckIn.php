@@ -17,16 +17,16 @@ $nombre = $_SESSION['user'] ?? '';
 echo '      <h1>WELCOME '. $nombre .'</h1>';
 echo '      <div class="card border">';
 // ---------------------------------------------------------------------------------
-echo '      <form id="" name="" action="'.htmlentities($_SERVER["PHP_SELF"]) .'" method="post" class="card-body">';
-echo '        <div class="form-group">';
-echo '          Vuelos';
-// ----------------- LISTADO DE RESERVAS ----------------------------------------
-echo '          <select name="reserva" class="">';
-echo '            <option disabled selected>Selecciona un vuelo</option>';
 if(isset($allVuelos)){
+  echo '      <form id="" name="" action="'.htmlentities($_SERVER["PHP_SELF"]) .'" method="post" class="card-body">';
+  echo '        <div class="form-group">';
+  echo '          Vuelos';
+// ----------------- LISTADO DE RESERVAS ----------------------------------------
+  echo '          <select name="reserva_id" class="">';
+// echo '            <option disabled selected>Selecciona un vuelo</option>';
   $optionsList = '';
   foreach($allVuelos as $v){
-    $optionsList .= '<option value="' . $v['flight_id'].'">';
+    $optionsList .= '<option value="' . $v['booking_id'].'">';
     $optionsList .= $v['flightno'] . ' ';
     $optionsList .= $v['airlinename'] . ' ';
     $optionsList .= 'from <b>'.$v['from_a'].'</b> ';
@@ -35,13 +35,15 @@ if(isset($allVuelos)){
     $optionsList .= '</option>';
   }
   echo $optionsList;
+  echo '          </select>';
+// BOTON CHECK IN
+  echo '          <br>';
+  echo '          <input type="submit" name="checkIn" value="Check In" class="btn btn-info disabled">';
+  echo '        </div>';
+  echo '      </form>';
+}else{
+  echo '      <h4>No hay reservas disponibles para hacer CHECK IN.<br> Por favor, vuelva a Inicio.</h4>';
 }
-echo '          </select>';
-echo '        </div>';
-// BOTON AGREGAR AL CARRITO
-echo '  <input type="submit" name="checkIn" value="Check In" class="btn btn-info disabled">';
-}
-echo '      </form>';
 echo '      </div>';
 echo '    </main>';
 echo '  </body>';

@@ -36,6 +36,7 @@ RESERVAS:
 + QUITAR CONSTANTES
 + INSERTS A DB
 + pago SIN REDSYS
-- pago CON REDSYS
-- check in 
++ pago CON REDSYS
++ check in 
+- Consultar Reservas
 ------------------------------------------------------
