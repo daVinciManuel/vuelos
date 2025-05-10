@@ -1,5 +1,7 @@
 <?php
 function storeCarritoPagado($cart,$userid){
+  include_once '../db/connect.php';
+  include_once '../models/mpayment.php';
   $done = false;
   foreach($cart['vuelos'] as $k => $v){
     $cantidad = $cart['cantidad'][$v];

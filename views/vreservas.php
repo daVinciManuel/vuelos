@@ -17,7 +17,7 @@ $nombre = $_SESSION['user'] ?? '';
 echo '      <h1>WELCOME '. $nombre .'</h1>';
 echo '      <div class="card border">';
 // ---------------------------------------------------------------------------------
-echo '      <form id="" name="" action="" method="post" class="card-body">';
+echo '      <form id="" name="" action="'.htmlentities($_SERVER["PHP_SELF"]) .'" method="post" class="card-body">';
 echo '        <div class="form-group">';
 echo '          Vuelos';
 // ----------------- LISTADO DE PRODUCTOS ----------------------------------------
@@ -90,7 +90,7 @@ if(isset($vcarrito) && isset($cart)){
 }
 echo '      </form>';
 // BOTON COMPRAR 
-if($pago){
+if(isset($enablePago) && $enablePago){
   echo '<form action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">';
   if(isset($redsysData)){
   echo '  <input type="hidden" name="Ds_SignatureVersion" value="'. $version .'"/>';
