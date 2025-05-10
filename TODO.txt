@@ -37,6 +37,6 @@ RESERVAS:
 + INSERTS A DB
 + pago SIN REDSYS
 + pago CON REDSYS
-+ check in 
-- Consultar Reservas
 ------------------------------------------------------
++ check in 
++ Consultar Reservas

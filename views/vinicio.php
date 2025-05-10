@@ -20,6 +20,7 @@ echo '<h1>WELCOME '. $nombre .'</h1>';
 echo '      <menu>';
 echo '        <li><a href="./creservas.php">Reservar vuelos</a></li>';
 echo '        <li><a href="./ccheckIn.php">Check In</a></li>';
+echo '        <li><a href="./cconsultas.php">Consultar Reservas</a></li>';
 echo '      </menu>';
 echo '    </main>';
 echo '  </body>';
