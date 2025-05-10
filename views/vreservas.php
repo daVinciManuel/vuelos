@@ -22,7 +22,7 @@ echo '        <div class="form-group">';
 echo '          Vuelos';
 // ----------------- LISTADO DE PRODUCTOS ----------------------------------------
 echo '          <select name="flight" class="">';
-echo '            <option disabled selected>Selecciona una pista</option>';
+echo '            <option disabled selected>Selecciona un vuelo</option>';
 if(isset($allVuelos)){
   $optionsList = '';
   foreach($allVuelos as $v){
