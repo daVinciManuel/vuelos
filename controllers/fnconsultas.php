@@ -1,6 +1,6 @@
 <?php
 function getReservasOf($person){
-  if(!isset($_SESSION['flights'])){
+  if(!isset($_SESSION['reservas'])){
     include_once '../db/connect.php';
     include_once '../models/mconsultas.php';
     $reservas = getReservasFromDb($person);
