@@ -35,6 +35,7 @@ echo '     <br>';
 echo '     <br>';
 echo '     <br>';
 echo '     <br>';
+echo '  <a href="./controllers/cregistro.php">REGISTRO</a>';
 echo '     <br>';
 echo '     <br>';
 echo '     <br>';
