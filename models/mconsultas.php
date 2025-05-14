@@ -1,5 +1,5 @@
 <?php
-function getReservasFromDb($person){
+function getReservasOf($person){
   $conn = connect();
   $done = false;
   try{
