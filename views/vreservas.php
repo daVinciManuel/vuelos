@@ -91,7 +91,7 @@ if(isset($vcarrito) && isset($cart)){
 echo '      </form>';
 // BOTON COMPRAR 
 if(isset($enablePago) && $enablePago){
-  echo '<form action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">';
+  echo '<form name="frm" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">';
   if(isset($redsysData)){
   echo '  <input type="hidden" name="Ds_SignatureVersion" value="'. $version .'"/>';
   echo '  <input type="hidden" name="Ds_MerchantParameters" value="'. $params .'"/>';

@@ -64,5 +64,6 @@ if(isset($vcarrito) && isset($cart)){
   $version    = $redsysData['version'] ?? '';
   $params     = $redsysData['params'] ?? '';
   $signature  = $redsysData['signature'] ?? '';
+  
 }
 require_once '../views/vreservas.php';
