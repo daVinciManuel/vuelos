@@ -40,3 +40,5 @@ RESERVAS:
 ------------------------------------------------------
 + check in 
 + Consultar Reservas
+------------------------------------------------------
+- Fix inserts in booking table. issue: primary keys error
